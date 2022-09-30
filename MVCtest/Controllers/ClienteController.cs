@@ -31,10 +31,17 @@ namespace MVCtest.Controllers
             return View(miCliente);
         }
 
+        [HttpGet]
+        public IActionResult AltaCliente(){
+            return View();
+        }
+
         [HttpPost]
         public IActionResult AltaCliente(Cliente cliente) {
-
+            return RedirectToAction("Index");
         }
+
+
         
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
