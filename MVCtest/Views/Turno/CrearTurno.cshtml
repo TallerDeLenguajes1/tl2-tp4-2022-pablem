@@ -1,0 +1,19 @@
+@model MVCtest.Models.Turno
+
+@{
+    ViewData["Title"] = "Turno Creado";
+}
+
+@* <h1>@ViewData["Title"]</h1>
+
+<p>Mostrando turno Creado</p>
+
+<h2> @Model.Nombre </h2> *@
+
+
+<form asp-controller="Turno" asp-action="CrearTurno" method="post">
+
+    <input type="text" name="Nombre" />
+    @* <input type="text" name="Nombre" /> *@
+    <button type="submit"> Enviar </button>
+</form>

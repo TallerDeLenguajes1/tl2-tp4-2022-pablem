@@ -15,6 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        List<Cadete> listaCadetes = new List<Cadete>();
         return View();
     }
 
