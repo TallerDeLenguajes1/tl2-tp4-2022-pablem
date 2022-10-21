@@ -2,7 +2,7 @@ namespace cadAp2.Models
 {
     public class Pedido
     {
-        static private int pedidosRealizados = 0;
+        // static private int pedidosRealizados = 0;
 
         int nro;
         string obs;
@@ -12,7 +12,6 @@ namespace cadAp2.Models
         //Constructor
         public Pedido(string nomb, string dire, string tel, string refe, string obs)
         {
-            this.nro = ++pedidosRealizados;
             this.obs = obs;
             this.estado = EstadoPedido.Pendiente;
             this.cliente = new Cliente(nomb,dire,tel,refe);
@@ -24,9 +23,9 @@ namespace cadAp2.Models
         public EstadoPedido Estado { get => estado; set => estado = value; }
         public Cliente Cliente { get => cliente; set => cliente = value; }
 
-        public void mostrar()
+        public string mostrar()
         {
-            Console.WriteLine("+ Pedido: {0} - Cliente: {1} - Estado: {2}", nro, cliente.Nombre, estado);
+            return $"+ Pedido: {nro} - Cliente: {cliente.Nombre} - Estado: {estado}";
         }
     }
 }

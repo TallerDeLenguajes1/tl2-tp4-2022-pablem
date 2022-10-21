@@ -12,6 +12,10 @@ namespace cadAp2.Controllers
     // [Route("[Persona]")]
     public class PersonaController : Controller
     {
+        // static int nroTurno = 0;
+        static List<Persona> listaCadetes = new List<Persona>();
+        static List<Persona> listaUsuarios = new List<Persona>();
+
         private readonly ILogger<PersonaController> _logger;
 
         public PersonaController(ILogger<PersonaController> logger)
@@ -19,10 +23,10 @@ namespace cadAp2.Controllers
             _logger = logger;
         }
 
-        public string Index(int id)
-        {
-            return "Hola Operador nro "+id;
-        }
+        // public string Index(int id)
+        // {
+        //     return "Hola Operador nro "+id;
+        // } 
 
         public IActionResult ConsultaCadete() {
             var unCadete = new Cadete("Pepito","dire 01", "tel 388");
