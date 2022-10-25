@@ -12,7 +12,7 @@ namespace cadAp2.Controllers
     // [Route("[controller]")]
     public class PedidoController : Controller
     {
-        static int nPedidos;
+        static int numeroPedidos;
 
         static List<Pedido> listaPedidos = new List<Pedido>();
 
@@ -25,12 +25,13 @@ namespace cadAp2.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(listaPedidos);
         }
 
-        public IActionResult ListaPedidos()
+        public IActionResult AltaPedido()
         {
-            return View(listaPedidos);
+            ViewData["idPed"] = numeroPedidos+1;
+            return View();
         }
 
         public IActionResult AltaPedido()
@@ -39,10 +40,10 @@ namespace cadAp2.Controllers
         }
 
         [HttpPost]
-        public IActionResult AltaPedidoPost(Pedido pedido) {
-            pedido.Nro = ++nPedidos;
+        public IActionResult GuardarCadete(Pedido pedido) {
+            pedido.Id = ++numeroCadetes;
             listaPedidos.Add(pedido);
-            return View("ListaPedidos", listaPedidos);
+            return RedirectToAction("Index",listaPedidos);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
