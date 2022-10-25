@@ -21,6 +21,15 @@ namespace cadAp2.Controllers
             _logger = logger;
         }
 
+        /***** //spoiler alert: implementar con base de datos
+        public async Task<IActionResult> Index()
+        {
+            return _context.Movie != null ? 
+                View(await _context.Movie.ToListAsync()) :
+                Problem("Entity set 'MvcMovieContext.Movie'  is null.");
+        }
+        *******/
+
         public IActionResult Index()
         {
             return View(listaCadetes);
@@ -35,13 +44,26 @@ namespace cadAp2.Controllers
         // [HttpGet]
         // public IActionResult ActualizarCadete(int id)
         // {
-        //     return View(listaCadetes.Select(c => c.Id == id).Single());
+        //     return View(listaCadetes.Select(x => x.Id == id).Single());
         // }
 
         [HttpPost]
         public IActionResult GuardarCadete(Cadete cadete) {
             cadete.Id = ++numeroCadetes;
             listaCadetes.Add(cadete);
+            return RedirectToAction("Index",listaCadetes);
+        }
+
+        public IActionResult ConfirmacionBorrar(int id) 
+        {
+            ///////control if(listaCadetes.any)
+            var cadete = listaCadetes.Single(x => x.Id == id); //.SingleOrDefault(); 
+            return View(cadete);
+        }
+
+        // [HttpGet]
+        public IActionResult BorrarCadete(int id) {
+            listaCadetes.Remove(listaCadetes.Single(x => x.Id == id));
             return RedirectToAction("Index",listaCadetes);
         }
 
