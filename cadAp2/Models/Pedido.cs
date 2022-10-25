@@ -4,28 +4,28 @@ namespace cadAp2.Models
     {
         // static private int pedidosRealizados = 0;
 
-        int nro;
-        string obs;
+        int id;
+        string detalles;
         EstadoPedido estado;
         Cliente cliente;
 
         //Constructor
-        public Pedido(string nomb, string dire, string tel, string refe, string obs)
+        public Pedido(string nomb, string dire, string tel, string refe, string detalles)
         {
-            this.obs = obs;
+            this.detalles = detalles;
             this.estado = EstadoPedido.Pendiente;
             this.cliente = new Cliente(nomb,dire,tel,refe);
         }
 
         //Getters & Setters
-        public int Nro { get => nro; set => nro = value; }
-        public string Obs { get => obs; set => obs = value; }
+        public int Id { get => id; set => id = value; }
+        public string Detalles { get => detalles; set => detalles = value; }
         public EstadoPedido Estado { get => estado; set => estado = value; }
         public Cliente Cliente { get => cliente; set => cliente = value; }
 
         public string mostrar()
         {
-            return $"+ Pedido: {nro} - Cliente: {cliente.Nombre} - Estado: {estado}";
+            return $"+ Pedido: {id} - Cliente: {cliente.Nombre} - Estado: {estado}";
         }
     }
 }

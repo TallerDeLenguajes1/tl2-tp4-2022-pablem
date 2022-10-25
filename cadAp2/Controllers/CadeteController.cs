@@ -9,15 +9,14 @@ using cadAp2.Models;
 
 namespace cadAp2.Controllers
 {
-    public class PersonaController : Controller
+    public class CadeteController : Controller
     {
         static int numeroCadetes = 0;
         static List<Cadete> listaCadetes = new List<Cadete>();
-        static List<Persona> listaUsuarios = new List<Persona>();
 
-        private readonly ILogger<PersonaController> _logger;
+        private readonly ILogger<CadeteController> _logger;
 
-        public PersonaController(ILogger<PersonaController> logger)
+        public CadeteController(ILogger<CadeteController> logger)
         {
             _logger = logger;
         }

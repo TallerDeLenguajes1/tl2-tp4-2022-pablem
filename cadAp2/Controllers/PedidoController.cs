@@ -34,14 +34,9 @@ namespace cadAp2.Controllers
             return View();
         }
 
-        public IActionResult AltaPedido()
-        {
-            return View();
-        }
-
         [HttpPost]
         public IActionResult GuardarCadete(Pedido pedido) {
-            pedido.Id = ++numeroCadetes;
+            pedido.Id = ++numeroPedidos;
             listaPedidos.Add(pedido);
             return RedirectToAction("Index",listaPedidos);
         }
