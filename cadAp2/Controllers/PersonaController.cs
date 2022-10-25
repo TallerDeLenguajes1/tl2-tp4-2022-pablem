@@ -9,11 +9,10 @@ using cadAp2.Models;
 
 namespace cadAp2.Controllers
 {
-    // [Route("[Persona]")]
     public class PersonaController : Controller
     {
-        // static int nroTurno = 0;
-        static List<Persona> listaCadetes = new List<Persona>();
+        static int numeroCadetes = 0;
+        static List<Cadete> listaCadetes = new List<Cadete>();
         static List<Persona> listaUsuarios = new List<Persona>();
 
         private readonly ILogger<PersonaController> _logger;
@@ -23,28 +22,30 @@ namespace cadAp2.Controllers
             _logger = logger;
         }
 
-        // public string Index(int id)
-        // {
-        //     return "Hola Operador nro "+id;
-        // } 
-
-        public IActionResult ConsultaCadete() {
-            var unCadete = new Cadete("Pepito","dire 01", "tel 388");
-            return View(unCadete);
+        public IActionResult Index()
+        {
+            return View(listaCadetes);
         }
 
-        [HttpGet]
-        public IActionResult AltaCliente(){
+        public IActionResult AltaCadete()
+        {
+            ViewData["idCad"] = numeroCadetes+1;
             return View();
         }
 
+        // [HttpGet]
+        // public IActionResult ActualizarCadete(int id)
+        // {
+        //     return View(listaCadetes.Select(c => c.Id == id).Single());
+        // }
+
         [HttpPost]
-        public IActionResult AltaCliente(Cadete cadete) {
-            return RedirectToAction("Index");
+        public IActionResult GuardarCadete(Cadete cadete) {
+            cadete.Id = ++numeroCadetes;
+            listaCadetes.Add(cadete);
+            return RedirectToAction("Index",listaCadetes);
         }
 
-
-        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

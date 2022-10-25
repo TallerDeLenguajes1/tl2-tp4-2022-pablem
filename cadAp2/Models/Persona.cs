@@ -2,7 +2,7 @@ namespace cadAp2.Models
 {
     public class Persona
     {
-        static private int personasIngresadas = 0;
+        // static private int personasIngresadas = 0;
 
         int id;
         string nombre;
@@ -12,7 +12,7 @@ namespace cadAp2.Models
         //Constructor Base
         public Persona(string nombre, string direccion, string telefono)
         {
-            this.id = ++personasIngresadas;
+            this.id = 0;
             this.nombre = nombre;
             this.direccion = direccion;
             this.telefono = telefono;
